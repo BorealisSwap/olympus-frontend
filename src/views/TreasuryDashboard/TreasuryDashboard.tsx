@@ -1,114 +1,68 @@
 import { memo } from "react";
 import "./treasury-dashboard.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Paper, Grid, Box, Zoom, Container, useMediaQuery } from "@material-ui/core";
-import { MarketCap, OHMPrice, WSOHMPrice, CircSupply, BackingPerOHM, CurrentIndex } from "./components/Metric/Metric";
+import { useSelector } from "react-redux";
 
+import { Paper, Grid, Box, Zoom, Container, useMediaQuery } from "@material-ui/core";
+import DashboardPaper from "src/components/DashboardPaper";
 import {
-  TotalValueDepositedGraph,
-  MarketValueGraph,
-  RiskFreeValueGraph,
-  ProtocolOwnedLiquidityGraph,
-  OHMStakedGraph,
-  APYOverTimeGraph,
-  RunwayAvailableGraph,
-} from "./components/Graph/Graph";
+  MarketCap,
+  OHMPrice,
+  WSOHMPrice,
+  CircSupply,
+  BackingPerOHM,
+  CurrentIndex,
+  Price,
+  TVL,
+  APY,
+  TreasuryMarketValue,
+} from "./components/Metric/Metric";
 
 const TreasuryDashboard = memo(() => {
   const isSmallScreen = useMediaQuery("(max-width: 650px)");
   const isVerySmallScreen = useMediaQuery("(max-width: 379px)");
+  // const marketPrice = useSelector(state => {
+  //   return state.app.marketPrice;
+  // });
+  // const circSupply = useSelector(state => {
+  //   return state.app.circSupply;
+  // });
+  // const totalSupply = useSelector(state => {
+  //   return state.app.totalSupply;
+  // });
+  // const marketCap = useSelector(state => {
+  //   return state.app.marketCap;
+  // });
 
   return (
     <div id="treasury-dashboard-view" className={`${isSmallScreen && "smaller"} ${isVerySmallScreen && "very-small"}`}>
       <Container
         style={{
-          paddingLeft: isSmallScreen || isVerySmallScreen ? "0" : "3.3rem",
-          paddingRight: isSmallScreen || isVerySmallScreen ? "0" : "3.3rem",
+          paddingLeft: isSmallScreen || isVerySmallScreen ? "10%" : "10%",
+          paddingRight: isSmallScreen || isVerySmallScreen ? "10%" : "10%",
         }}
       >
-        <Box className="hero-metrics">
-          <Paper className="ohm-card">
-            <Box display="flex" flexWrap="wrap" justifyContent="space-between" alignItems="center">
-              <MarketCap />
-              <OHMPrice />
-              <WSOHMPrice />
-              <CircSupply />
-              <BackingPerOHM />
-              <CurrentIndex />
-            </Box>
-          </Paper>
+        <Box fontSize="20px" display="flex" justifyContent="center" mb="30px">
+          <Box display="flex" justifyContent="space-between" width="80%">
+            <Box className="dashbutton">BUY</Box>
+            <Box className="dashbutton">BOND</Box>
+          </Box>
         </Box>
-
-        <Zoom in={true}>
-          <Grid container spacing={2} className="data-grid">
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card ohm-chart-card">
-                <TotalValueDepositedGraph />
-              </Paper>
-            </Grid>
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card ohm-chart-card">
-                <MarketValueGraph />
-              </Paper>
-            </Grid>
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card ohm-chart-card">
-                <RiskFreeValueGraph />
-              </Paper>
-            </Grid>
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card">
-                <ProtocolOwnedLiquidityGraph />
-              </Paper>
-            </Grid>
-
-            {/*  Temporarily removed until correct data is in the graph */}
-            {/* <Grid item lg={6} md={12} sm={12} xs={12}>
-              <Paper className="ohm-card">
-                <Chart
-                  type="bar"
-                  data={data}
-                  dataKey={["holders"]}
-                  headerText="Holders"
-                  stroke={[theme.palette.text.secondary]}
-                  headerSubText={`${data.length > 0 && data[0].holders}`}
-                  bulletpointColors={bulletpoints.holder}
-                  itemNames={tooltipItems.holder}
-                  itemType={undefined}
-                  infoTooltipMessage={tooltipInfoMessages.holder}
-                  expandedGraphStrokeColor={theme.palette.graphStrokeColor}
-                  scale={undefined}
-                  color={undefined}
-                  stroke={undefined}
-                  dataFormat={undefined}
-                  isPOL={undefined}
-                  isStaked={undefined}
-                />
-              </Paper>
-            </Grid> */}
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card">
-                <OHMStakedGraph />
-              </Paper>
-            </Grid>
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card">
-                <APYOverTimeGraph />
-              </Paper>
-            </Grid>
-
-            <Grid item lg={6} md={6} sm={12} xs={12}>
-              <Paper className="ohm-card">
-                <RunwayAvailableGraph />
-              </Paper>
-            </Grid>
-          </Grid>
-        </Zoom>
+        <DashboardPaper title="LET THE GAMES BEGIN:" value="18d 9h 0m 18s" width="100%" />
+        <Box display="flex" justifyContent="space-between" flexDirection={isSmallScreen ? "column" : "row"}>
+          <DashboardPaper title="" value={APY} width="calc(35% - 30px)" />
+          <DashboardPaper title="" value={Price} width="calc(35% - 30px)" />
+          <DashboardPaper title="" value={MarketCap} width="calc(35% - 30px)" />
+        </Box>
+        <Box display="flex" justifyContent="space-between" flexDirection={isSmallScreen ? "column" : "row"}>
+          <DashboardPaper title="" value={TVL} width="calc(35% - 30px)" />
+          <DashboardPaper title="" value={TreasuryMarketValue} width="calc(35% - 30px)" />
+          <DashboardPaper title="" value={CircSupply} width="calc(35% - 30px)" />
+        </Box>
+        <Box display="flex" justifyContent="space-between" flexDirection={isSmallScreen ? "column" : "row"}>
+          <DashboardPaper title="" value={BackingPerOHM} width="calc(50% - 20px)" />
+          <DashboardPaper title="Staking Return Since Start" value="1.47x" width="calc(50% - 20px)" />
+        </Box>
       </Container>
     </div>
   );

@@ -16,6 +16,7 @@
   }
 
   .ohm-card {
+    background-color: rgba($color: #FFFFFF, $alpha: 0.4);
     max-width: unset !important;
     width: 100%;
     margin: auto;
@@ -32,10 +33,10 @@
     }
   }
   .hero-metrics {
-    width: 100%;
     margin-bottom: 23px;
     text-align: center;
     .ohm-card {
+      border-radius: 40px;
       max-width: unset !important;
       flex-direction: row;
       flex-wrap: wrap;
@@ -46,14 +47,20 @@
       div.metric {
         margin: 3px;
         min-width: 140px;
-        width: 30%;
       }
     }
   }
   .data-grid {
     overflow: hidden;
   }
+  
 }
+@media screen and (max-width : 650px){
+  .hero-metrics{
+    width : 100%!important;
+  }
+}
+
 
 .smaller {
   .ohm-card {
@@ -62,7 +69,6 @@
   .hero-metrics .ohm-card {
     > .MuiBox-root {
       flex-direction: column;
-      align-items: flex-start;
       flex-wrap: wrap;
     }
     div.metric {
@@ -96,4 +102,20 @@
       justify-content: center;
     }
   }
+}
+
+.dashbutton{
+  margin-top: 10px;
+  cursor: pointer;
+  width:40% ;
+  border:1px solid black ;
+  border-radius:50px;
+   display:flex ;
+   align-items:center;
+    justify-content:center;
+     height:50px;
+  transition: opacity 0.3s;
+}
+.dashbutton:hover{
+  opacity: 0.5;
 }

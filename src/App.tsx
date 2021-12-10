@@ -217,7 +217,7 @@ function App() {
               <TreasuryDashboard />
             </Route>
 
-            <Route exact path="/">
+            {/* <Route exact path="/">
               <Redirect to="/stake" />
             </Route>
 
@@ -242,7 +242,7 @@ function App() {
                 );
               })}
               <ChooseBond />
-            </Route>
+            </Route> */}
 
             <Route component={NotFound} />
           </Switch>

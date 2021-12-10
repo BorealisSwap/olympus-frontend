@@ -7,7 +7,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { Trans } from "@lingui/macro";
 
 function ConnectMenu({ theme }) {
-  const { connect, disconnect, connected, web3, chainID, address } = useWeb3Context();
+  const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
   const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [isHovering, setIsHovering] = useState(false);
@@ -24,7 +24,7 @@ function ConnectMenu({ theme }) {
   };
 
   if (isConnected) {
-    buttonText = <Trans>{address}</Trans>;
+    buttonText = <Trans>Disconnect</Trans>;
     clickFunc = disconnect;
   }
 

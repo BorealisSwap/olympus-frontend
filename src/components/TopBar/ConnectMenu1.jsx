@@ -7,7 +7,7 @@ import { useWeb3Context } from "src/hooks/web3Context";
 import { Trans } from "@lingui/macro";
 
 function ConnectMenu({ theme }) {
-  const { connect, disconnect, connected, web3, chainID, address } = useWeb3Context();
+  const { connect, disconnect, connected, web3, chainID } = useWeb3Context();
   const [anchorEl, setAnchorEl] = useState(null);
   const [isConnected, setConnected] = useState(connected);
   const [isHovering, setIsHovering] = useState(false);
@@ -16,7 +16,7 @@ function ConnectMenu({ theme }) {
     return state.pendingTransactions;
   });
 
-  let buttonText = <Trans>Connect Wallet</Trans>;
+  let buttonText = <Trans>0x5a9d....6dbd</Trans>;
   let clickFunc = connect;
 
   const handleClick = event => {
@@ -24,12 +24,12 @@ function ConnectMenu({ theme }) {
   };
 
   if (isConnected) {
-    buttonText = <Trans>{address}</Trans>;
+    buttonText = <Trans>0x5a9d....6dbd</Trans>;
     clickFunc = disconnect;
   }
 
   if (pendingTransactions && pendingTransactions.length > 0) {
-    buttonText = <Trans>In progress</Trans>;
+    buttonText = <Trans>0x5a9d....6dbd</Trans>;
     clickFunc = handleClick;
   }
 

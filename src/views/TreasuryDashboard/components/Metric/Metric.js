@@ -36,6 +36,39 @@ export const OHMPrice = () => {
   );
 };
 
+export const APY = () => {
+  const stakingAPY = useSelector(state => state.app.stakingAPY);
+
+  return (
+    <Metric className="price">
+      <Metric.Title>APY</Metric.Title>
+      <Metric.Value>{!isNaN(stakingAPY) && parseInt(stakingAPY)}</Metric.Value>
+    </Metric>
+  );
+};
+
+export const Price = () => {
+  const marketPrice = useSelector(state => state.app.marketPrice);
+
+  return (
+    <Metric className="price">
+      <Metric.Title>$AURORA Price</Metric.Title>
+      <Metric.Value>{!isNaN(marketPrice) && `$${parseInt(marketPrice)}`}</Metric.Value>
+    </Metric>
+  );
+};
+
+export const TVL = () => {
+  const stakingTVL = useSelector(state => state.app.stakingTVL);
+
+  return (
+    <Metric className="price">
+      <Metric.Title>TVL</Metric.Title>
+      <Metric.Value>{!isNaN(stakingTVL) && `$${parseInt(stakingTVL)}`}</Metric.Value>
+    </Metric>
+  );
+};
+
 export const CircSupply = () => {
   const circSupply = useSelector(state => state.app.circSupply);
   const totalSupply = useSelector(state => state.app.totalSupply);
@@ -44,8 +77,19 @@ export const CircSupply = () => {
 
   return (
     <Metric className="circ">
-      <Metric.Title>Circulating Supply (total)</Metric.Title>
-      <Metric.Value>{isDataLoaded && parseInt(circSupply) + " / " + parseInt(totalSupply)}</Metric.Value>
+      <Metric.Title>$AURORA Supply</Metric.Title>
+      <Metric.Value>{isDataLoaded && parseInt(circSupply)}</Metric.Value>
+    </Metric>
+  );
+};
+
+export const TreasuryMarketValue = () => {
+  const treasuryMarketValue = useSelector(state => state.app.treasuryMarketValue);
+
+  return (
+    <Metric className="bpo">
+      <Metric.Title>Treasury Balance</Metric.Title>
+      <Metric.Value>{!isNaN(treasuryMarketValue) && `$${parseInt(treasuryMarketValue)}`}</Metric.Value>
     </Metric>
   );
 };
@@ -55,7 +99,7 @@ export const BackingPerOHM = () => {
 
   return (
     <Metric className="bpo">
-      <Metric.Title>Backing per OHM</Metric.Title>
+      <Metric.Title>Backing per $AURORA</Metric.Title>
       <Metric.Value>{!isNaN(backingPerOhm) && formatCurrency(backingPerOhm, 2)}</Metric.Value>
     </Metric>
   );
