@@ -84,7 +84,6 @@ export function BondTableData({ bond }) {
   // Use BondPrice as indicator of loading.
   const isBondLoading = !bond.bondPrice ?? true;
   // const isBondLoading = useSelector(state => !state.bonding[bond]?.bondPrice ?? true);
-
   return (
     <TableRow id={`${bond.name}--bond`}>
       <TableCell align="left" className="bond-name-cell">

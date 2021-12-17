@@ -115,6 +115,8 @@ function Stake() {
 
     // 1st catch if quantity > balance
     let gweiValue = ethers.utils.parseUnits(quantity.toString(), "gwei");
+    console.log(gweiValue);
+    console.log(ohmBalance);
     if (action === "stake" && gweiValue.gt(ethers.utils.parseUnits(ohmBalance, "gwei"))) {
       return dispatch(error(t`You cannot stake more than your OHM balance.`));
     }

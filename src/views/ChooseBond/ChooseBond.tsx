@@ -60,7 +60,6 @@ function ChooseBond() {
       return tokenBalances;
     }
   });
-
   return (
     <div id="choose-bond-view">
       {!isAccountLoading && !isEmpty(accountBonds) && <ClaimBonds activeBonds={accountBonds} />}
@@ -130,9 +129,9 @@ function ChooseBond() {
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {bonds.map(bond => (
-                      <BondTableData key={bond.name} bond={bond} />
-                    ))}
+                    {bonds.map(bond => {
+                      return <BondTableData key={bond.name} bond={bond} />;
+                    })}
                   </TableBody>
                 </Table>
               </TableContainer>

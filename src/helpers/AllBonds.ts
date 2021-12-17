@@ -47,8 +47,8 @@ export const dai = new StableBond({
       reserveAddress: "0x6b175474e89094c44da98b954eedeac495271d0f",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xDea5668E815dAF058e3ecB30F645b04ad26374Cf",
-      reserveAddress: "0xB2180448f8945C8Cc8AE9809E67D6bd27d8B2f2C",
+      bondAddress: "0xD215251Edb0E0a9e304bf5592DCca81164c9b94f",
+      reserveAddress: "0x0CD1efc09aaab956718e8c3eC26E30AFF119DE24",
     },
   },
 });
@@ -66,8 +66,8 @@ export const frax = new StableBond({
       reserveAddress: "0x853d955acef822db058eb8505911ed77f175b99e",
     },
     [NetworkID.Testnet]: {
-      bondAddress: "0xF651283543fB9D61A91f318b78385d187D300738",
-      reserveAddress: "0x2F7249cb599139e560f0c81c269Ab9b04799E453",
+      bondAddress: "0xfDd456340C67874BB5B640978F0b7daf75301A31",
+      reserveAddress: "0xf5c29436108012554E508D2A351b540AcD66aFE5",
     },
   },
 });
@@ -305,7 +305,8 @@ export const ohm_weth = new CustomBond({
 // Is it a stableCoin bond? use `new StableBond`
 // Is it an LP Bond? use `new LPBond`
 // Add new bonds to this array!!
-export const allBonds = [dai, frax, eth, cvx, ohm_dai, ohm_frax, lusd, ohm_lusd, ohm_weth];
+// export const allBonds = [dai, frax, eth, cvx, ohm_dai, ohm_frax, lusd, ohm_lusd, ohm_weth];
+export const allBonds = [dai, frax];
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
 export const allExpiredBonds = [cvx_expired];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {

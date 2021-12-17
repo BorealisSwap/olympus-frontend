@@ -217,20 +217,19 @@ function App() {
               <TreasuryDashboard />
             </Route>
 
-            {/* <Route exact path="/">
-              <Redirect to="/stake" />
-            </Route>
-
-            <Route path="/stake">
-              <Stake />
-            </Route>
-
-            <Route path="/wrap">
+            {/*<Route path="/wrap">
               <Wrap />
             </Route>
 
             <Route path="/33-together">
               <PoolTogether />
+            </Route> */}
+
+            <Route exact path="/">
+              <Redirect to="/stake" />
+            </Route>
+            <Route path="/stake">
+              <Stake />
             </Route>
 
             <Route path="/bonds">
@@ -242,7 +241,7 @@ function App() {
                 );
               })}
               <ChooseBond />
-            </Route> */}
+            </Route>
 
             <Route component={NotFound} />
           </Switch>
