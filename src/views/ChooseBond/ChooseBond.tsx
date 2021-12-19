@@ -60,6 +60,7 @@ function ChooseBond() {
       return tokenBalances;
     }
   });
+
   return (
     <div id="choose-bond-view">
       {!isAccountLoading && !isEmpty(accountBonds) && <ClaimBonds activeBonds={accountBonds} />}

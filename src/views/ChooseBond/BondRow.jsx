@@ -13,7 +13,6 @@ export function BondDataCard({ bond }) {
   const { chainID } = useWeb3Context();
   const { loading } = useBonds(chainID);
   const isBondLoading = !bond.bondPrice ?? true;
-
   return (
     <Slide direction="up" in={true}>
       <Paper id={`${bond.name}--bond`} className="bond-data-card ohm-card">

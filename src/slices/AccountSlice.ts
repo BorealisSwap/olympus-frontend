@@ -28,7 +28,6 @@ export const getBalances = createAsyncThunk(
   async ({ address, networkID, provider }: IBaseAddressAsyncThunk) => {
     const ohmContract = new ethers.Contract(addresses[networkID].OHM_ADDRESS as string, ierc20Abi, provider) as IERC20;
     const ohmBalance = await ohmContract.balanceOf(address);
-    console.log("OHMBALANCE", ohmBalance);
     const sohmContract = new ethers.Contract(
       addresses[networkID].SOHM_ADDRESS as string,
       ierc20Abi,
@@ -103,7 +102,6 @@ export const loadAccountDetails = createAsyncThunk(
 
     const wsohmContract = 0;
     const unwrapAllowance = 0;
-    console.log("!!!!!!!!!!!!!");
     await dispatch(getBalances({ address, networkID, provider }));
     return {
       staking: {
@@ -146,12 +144,10 @@ export const calculateUserBondDetails = createAsyncThunk(
     // dispatch(fetchBondInProgress());
 
     // Calculate bond details.
-    console.log(bond);
     const bondContract = bond.getContractForBond(networkID, provider);
     const reserveContract = bond.getContractForReserve(networkID, provider);
 
     let pendingPayout, bondMaturationBlock;
-
     const bondDetails = await bondContract.bondInfo(address);
     let interestDue: BigNumberish = Number(bondDetails.payout.toString()) / Math.pow(10, 9);
     bondMaturationBlock = +bondDetails.vesting + +bondDetails.lastBlock;

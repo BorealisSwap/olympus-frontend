@@ -308,7 +308,8 @@ export const ohm_weth = new CustomBond({
 // export const allBonds = [dai, frax, eth, cvx, ohm_dai, ohm_frax, lusd, ohm_lusd, ohm_weth];
 export const allBonds = [dai, frax];
 // TODO (appleseed-expiredBonds): there may be a smarter way to refactor this
-export const allExpiredBonds = [cvx_expired];
+// export const allExpiredBonds = [cvx_expired];
+export const allExpiredBonds = [];
 export const allBondsMap = allBonds.reduce((prevVal, bond) => {
   return { ...prevVal, [bond.name]: bond };
 }, {});

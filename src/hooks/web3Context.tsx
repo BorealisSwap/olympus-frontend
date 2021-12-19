@@ -96,7 +96,7 @@ export const Web3ContextProvider: React.FC<{ children: ReactElement }> = ({ chil
           package: WalletConnectProvider,
           options: {
             rpc: {
-              1313161554: getMainnetURI(),
+              1: getMainnetURI(),
               1313161555: getTestnetURI(),
             },
           },
